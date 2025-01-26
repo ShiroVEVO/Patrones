@@ -2,16 +2,12 @@ package com.gardenia.viveroapp.Controller;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gardenia.viveroapp.Model.Role;
 import com.gardenia.viveroapp.Model.DTO.RoleDTO;
 import com.gardenia.viveroapp.Service.RoleService;
 
@@ -51,8 +47,8 @@ public class RoleController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<RoleDTO> updateRole(@PathVariable Integer id, @RequestBody RoleDTO role) {
-        return new ResponseEntity<RoleDTO>(roleService.updateRole(id, role), HttpStatus.OK);
+    @PutMapping
+    public ResponseEntity<RoleDTO> updateRole(@RequestBody RoleDTO role) {
+        return new ResponseEntity<RoleDTO>(roleService.updateRole(role), HttpStatus.OK);
     }
 }

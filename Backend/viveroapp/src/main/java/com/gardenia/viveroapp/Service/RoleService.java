@@ -37,8 +37,8 @@ public class RoleService {
         roleRepository.deleteById(id);
     }
 
-    public RoleDTO updateRole(Integer id, RoleDTO role) {
-        Optional<Role> optionalRole = roleRepository.findById(id);
+    public RoleDTO updateRole(RoleDTO role) {
+        Optional<Role> optionalRole = roleRepository.findById(role.getId());
         if (optionalRole.isPresent()) {
             Role savedRole = optionalRole.get();
             savedRole.setName(role.getName());

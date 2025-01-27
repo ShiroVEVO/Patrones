@@ -7,10 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gardenia.viveroapp.DTO.PersonDTO;
 import com.gardenia.viveroapp.Model.Person;
 import com.gardenia.viveroapp.Model.PersonId;
-import com.gardenia.viveroapp.Model.DTO.PersonDTO;
-
 import com.gardenia.viveroapp.Repository.PersonRepository;
 
 @Service
@@ -56,7 +55,8 @@ public class PersonService {
     // VALIDAR QUE NO HAYA SIDO AGREGADA YA LA PERSONA CON ESE ID
     public PersonDTO addPerson(PersonDTO personDTO) {
         PersonId personid = new PersonId(personDTO.getDocType(), personDTO.getDocNumber());
-        Person person = new Person(personid, personDTO.getName(), personDTO.getLastname(), personDTO.getPhoneNumber());
+        Person person = new Person(personid, personDTO.getName(), personDTO.getLastname(), personDTO.getPhoneNumber(),
+                null);
         personRepository.save(person);
         return personDTO;
     }

@@ -3,7 +3,7 @@ package com.gardenia.viveroapp.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gardenia.viveroapp.Model.DTO.PersonDTO;
+import com.gardenia.viveroapp.DTO.PersonDTO;
 import com.gardenia.viveroapp.Service.PersonService;
 
 import java.util.List;

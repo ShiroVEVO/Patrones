@@ -13,13 +13,11 @@ import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
-@Data
 @Entity
 @Table(name = "role")
 @NoArgsConstructor
-@RequiredArgsConstructor
+@Data
 public class Role {
 
     @Id
@@ -27,7 +25,6 @@ public class Role {
     @Column(name = "idrole", columnDefinition = "INT UNSIGNED")
     private Integer idrole;
 
-    @NonNull
     @Column(name = "name", columnDefinition = "VARCHAR(15)", nullable = false)
     private String name;
 

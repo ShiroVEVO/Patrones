@@ -27,7 +27,8 @@ public class Account {
     @Column(name = "email", columnDefinition = "VARCHAR(40)", nullable = false)
     private String email;
 
-    // Revisar en el futuro que longitud tendrá la contraseña encriptada.
+    // REVISAR O CAMBIAR LA LONGITUD DEL CAMPO EN FUNCION DE QUE TAN LARGA SEA
+    // ENCRIPTADA
     @Column(name = "password", columnDefinition = "VARCHAR(100)", nullable = false)
     private String password;
 
@@ -44,5 +45,4 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "role_idrole")
     private Role role;
-
 }

@@ -1,4 +1,4 @@
-package com.gardenia.viveroapp.Model.DTO;
+package com.gardenia.viveroapp.DTO;
 
 import lombok.Data;
 import lombok.NonNull;
@@ -8,7 +8,6 @@ public class RoleDTO {
 
     private Integer id;
 
-    @NonNull
     private String name;
 
     public RoleDTO(Integer id, String name) {

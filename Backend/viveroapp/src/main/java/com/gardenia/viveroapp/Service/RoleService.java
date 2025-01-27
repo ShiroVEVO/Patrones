@@ -7,8 +7,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gardenia.viveroapp.Converters.RoleFactory;
+import com.gardenia.viveroapp.DTO.RoleDTO;
 import com.gardenia.viveroapp.Model.Role;
-import com.gardenia.viveroapp.Model.DTO.RoleDTO;
 import com.gardenia.viveroapp.Repository.RoleRepository;
 
 @Service
@@ -16,6 +17,9 @@ public class RoleService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private RoleFactory roleFactory;
 
     public List<RoleDTO> getAllRoles() {
         List<Role> roles = roleRepository.findAll();
@@ -29,7 +33,7 @@ public class RoleService {
     }
 
     public RoleDTO addRole(RoleDTO roleDTO) {
-        roleRepository.save(new Role(roleDTO.getName()));
+        roleRepository.save(roleFactory.DTOToEntity(roleDTO));
         return roleDTO;
     }
 
@@ -43,8 +47,7 @@ public class RoleService {
             Role savedRole = optionalRole.get();
             savedRole.setName(role.getName());
             savedRole = roleRepository.save(savedRole);
-            RoleDTO newRole = new RoleDTO(savedRole.getIdrole(), savedRole.getName());
-            return newRole;
+            return roleFactory.toDTO(savedRole);
         } else {
             return null;
         }

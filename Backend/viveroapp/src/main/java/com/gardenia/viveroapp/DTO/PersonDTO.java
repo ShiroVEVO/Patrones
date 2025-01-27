@@ -1,13 +1,11 @@
-package com.gardenia.viveroapp.Model.DTO;
+package com.gardenia.viveroapp.DTO;
 
 import io.micrometer.common.lang.NonNull;
 import lombok.Builder;
 import lombok.Data;
-import lombok.ToString;
 
 @Builder
 @Data
-@ToString
 public class PersonDTO {
 
     @NonNull

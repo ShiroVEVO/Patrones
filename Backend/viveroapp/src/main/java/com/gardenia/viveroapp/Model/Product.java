@@ -1,5 +1,6 @@
 package com.gardenia.viveroapp.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -36,7 +37,9 @@ public class Product {
     @Column(name = "description", columnDefinition = "VARCHAR(400)", nullable = false)
     private String description;
 
-    // private BaseCost basecost;
+    @ManyToOne
+    @JoinColumn(name = "base_cost_idbase_cost")
+    private BaseCost basecost;
 
     @ManyToOne
     @JoinColumn(name = "product_idproduct")
@@ -44,4 +47,10 @@ public class Product {
 
     @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> children;
+
+    // ----
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetail> orderDetails;
+
 }

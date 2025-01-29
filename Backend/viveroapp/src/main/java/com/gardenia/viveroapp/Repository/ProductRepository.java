@@ -9,5 +9,7 @@ import com.gardenia.viveroapp.Model.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    List<Product> findByChildrenIsEmpty();
+    List<Product> findByParentIsNullAndChildrenIsEmpty();
+
+    List<Product> findByParentIdproduct(Integer id);
 }

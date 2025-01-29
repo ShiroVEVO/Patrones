@@ -1,6 +1,7 @@
 package com.gardenia.viveroapp.DTO;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.gardenia.viveroapp.Model.PersonId;
 
@@ -15,4 +16,5 @@ public class PurchaseOrderDTO {
     private Integer amount;
     private String state;
     private PersonId personId;
+    private List<OrderDetailDTO> orderDetails;
 }

@@ -30,7 +30,7 @@ public class PurchaseOrderFactory implements AbstractFactory<PurchaseOrder, Purc
             return null;
         } else {
             PurchaseOrder entity = new PurchaseOrder(dto.getIdorder(), dto.getDate(), dto.getAmount(), dto.getState(),
-                    null);
+                    null, null);
             return entity;
         }
     }

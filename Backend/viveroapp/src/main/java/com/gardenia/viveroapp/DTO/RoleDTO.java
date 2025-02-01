@@ -1,7 +1,6 @@
 package com.gardenia.viveroapp.DTO;
 
 import lombok.Data;
-import lombok.NonNull;
 
 @Data
 public class RoleDTO {

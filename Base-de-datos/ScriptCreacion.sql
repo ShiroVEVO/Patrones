@@ -166,19 +166,19 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gardenia`.`order`
+-- Table `gardenia`.`purchase_order`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gardenia`.`order` (
-  `idorder` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `gardenia`.`purchase_order` (
+  `idpurchase_order` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `date` DATETIME NOT NULL,
-  `amount` MEDIUMINT(1) NULL,
-  `state` VARCHAR(40) NULL,
-  `client_doc_numer` BIGINT(1) UNSIGNED NOT NULL,
-  `client_doc_type` VARCHAR(3) NOT NULL,
-  PRIMARY KEY (`idorder`),
-  INDEX `fk_order_client1_idx` (`client_doc_numer` ASC, `client_doc_type` ASC) VISIBLE,
-  CONSTRAINT `fk_order_client1`
-    FOREIGN KEY (`client_doc_numer` , `client_doc_type`)
+  `amount` MEDIUMINT(1) NOT NULL,
+  `state` VARCHAR(40) NOT NULL,
+  `person_doc_number` BIGINT(1) UNSIGNED NOT NULL,
+  `person_doc_type` VARCHAR(3) NOT NULL,
+  PRIMARY KEY (`idpurchase_order`),
+  INDEX `fk_purchase_order_person1_idx` (`person_doc_number` ASC, `person_doc_type` ASC) VISIBLE,
+  CONSTRAINT `fk_purchase_order_person1`
+    FOREIGN KEY (`person_doc_number` , `person_doc_type`)
     REFERENCES `gardenia`.`person` (`doc_number` , `doc_type`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -221,18 +221,18 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`address` (
   `address` VARCHAR(80) NOT NULL,
   `references` VARCHAR(80) NULL,
   `city_idcity` INT UNSIGNED NOT NULL,
-  `client_doc_numer` BIGINT(1) UNSIGNED NOT NULL,
-  `client_doc_type` VARCHAR(3) NOT NULL,
+  `person_doc_number` BIGINT(1) UNSIGNED NOT NULL,
+  `person_doc_type` VARCHAR(3) NOT NULL,
   PRIMARY KEY (`idaddress`),
   INDEX `fk_address_city1_idx` (`city_idcity` ASC) VISIBLE,
-  INDEX `fk_address_client1_idx` (`client_doc_numer` ASC, `client_doc_type` ASC) VISIBLE,
+  INDEX `fk_address_person1_idx` (`person_doc_number` ASC, `person_doc_type` ASC) VISIBLE,
   CONSTRAINT `fk_address_city1`
     FOREIGN KEY (`city_idcity`)
     REFERENCES `gardenia`.`city` (`idcity`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_address_client1`
-    FOREIGN KEY (`client_doc_numer` , `client_doc_type`)
+  CONSTRAINT `fk_address_person1`
+    FOREIGN KEY (`person_doc_number` , `person_doc_type`)
     REFERENCES `gardenia`.`person` (`doc_number` , `doc_type`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -364,32 +364,10 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `gardenia`.`order_has_product`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gardenia`.`order_has_product` (
-  `order_idorder` INT UNSIGNED NOT NULL,
-  `product_idproduct` INT UNSIGNED NOT NULL,
-  PRIMARY KEY (`order_idorder`, `product_idproduct`),
-  INDEX `fk_order_has_product_product1_idx` (`product_idproduct` ASC) VISIBLE,
-  INDEX `fk_order_has_product_order1_idx` (`order_idorder` ASC) VISIBLE,
-  CONSTRAINT `fk_order_has_product_order1`
-    FOREIGN KEY (`order_idorder`)
-    REFERENCES `gardenia`.`order` (`idorder`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_order_has_product_product1`
-    FOREIGN KEY (`product_idproduct`)
-    REFERENCES `gardenia`.`product` (`idproduct`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `gardenia`.`role`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gardenia`.`role` (
-  `idrole` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `idrole` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`idrole`))
 ENGINE = InnoDB;
@@ -403,7 +381,7 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`account` (
   `email` VARCHAR(40) NOT NULL,
   `password` VARCHAR(20) NOT NULL,
   `birthdate` DATE NOT NULL,
-  `role_idrole` INT UNSIGNED NOT NULL,
+  `role_idrole` INT NOT NULL,
   `person_doc_number` BIGINT(1) UNSIGNED NOT NULL,
   `person_doc_type` VARCHAR(3) NOT NULL,
   PRIMARY KEY (`idaccount`),
@@ -417,6 +395,30 @@ CREATE TABLE IF NOT EXISTS `gardenia`.`account` (
   CONSTRAINT `fk_account_person1`
     FOREIGN KEY (`person_doc_number` , `person_doc_type`)
     REFERENCES `gardenia`.`person` (`doc_number` , `doc_type`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `gardenia`.`order_detail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `gardenia`.`order_detail` (
+  `idorder_detail` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `quantity` SMALLINT(1) UNSIGNED NOT NULL,
+  `purchase_order_idpurchase_order` INT UNSIGNED NOT NULL,
+  `product_idproduct` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`idorder_detail`, `purchase_order_idpurchase_order`, `product_idproduct`),
+  INDEX `fk_order_detail_purchase_order1_idx` (`purchase_order_idpurchase_order` ASC) VISIBLE,
+  INDEX `fk_order_detail_product1_idx` (`product_idproduct` ASC) VISIBLE,
+  CONSTRAINT `fk_order_detail_purchase_order1`
+    FOREIGN KEY (`purchase_order_idpurchase_order`)
+    REFERENCES `gardenia`.`purchase_order` (`idpurchase_order`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_order_detail_product1`
+    FOREIGN KEY (`product_idproduct`)
+    REFERENCES `gardenia`.`product` (`idproduct`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

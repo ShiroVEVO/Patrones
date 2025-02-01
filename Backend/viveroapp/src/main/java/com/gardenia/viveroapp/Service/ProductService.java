@@ -8,10 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gardenia.viveroapp.Converters.BaseCostFactory;
+import com.gardenia.viveroapp.Converters.ImageFactory;
 import com.gardenia.viveroapp.Converters.ProductFactory;
+import com.gardenia.viveroapp.DTO.ImageDTO;
 import com.gardenia.viveroapp.DTO.ProductDTO;
 import com.gardenia.viveroapp.Model.BaseCost;
+import com.gardenia.viveroapp.Model.Image;
 import com.gardenia.viveroapp.Model.Product;
+import com.gardenia.viveroapp.Repository.ImageRepository;
 import com.gardenia.viveroapp.Repository.ProductRepository;
 
 @Service
@@ -19,6 +23,9 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ImageFactory imageFactory;
 
     @Autowired
     private ProductFactory productFactory;
@@ -29,12 +36,22 @@ public class ProductService {
     public List<ProductDTO> getProductsWithoutVariants() {
         List<Product> products = productRepository.findByParentIsNullAndChildrenIsEmpty();
         List<ProductDTO> productsDTO = new ArrayList<ProductDTO>();
+
         if (productsDTO != null) {
             for (int i = 0; i < products.size(); i++) {
                 Product product = products.get(i);
                 ProductDTO productDTO = productFactory.toDTO(product);
                 productDTO.setBaseCost(baseCostFactory.toDTO(product.getBasecost()));
+                List<Image> images = product.getImages();
+                List<ImageDTO> imagesDTO = new ArrayList<ImageDTO>();
+                for (int j = 0; j < images.size(); j++) {
+                    Image image = images.get(j);
+                    ImageDTO imageDTO = imageFactory.toDTO(image);
+                    imagesDTO.add(imageDTO);
+                }
+                productDTO.setImages(imagesDTO);
                 productsDTO.add(productDTO);
+
             }
         }
         return productsDTO;
@@ -42,17 +59,25 @@ public class ProductService {
 
     public ProductDTO getProductById(Integer id) {
         List<ProductDTO> childrenDTO = new ArrayList<ProductDTO>();
+        List<ImageDTO> imagesDTO = new ArrayList<ImageDTO>();
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isPresent()) {
             Product product = optionalProduct.get();
             List<Product> children = productRepository.findByParentIdproduct(id);
+            List<Image> images = product.getImages();
             for (int i = 0; i < children.size(); i++) {
                 Product productChildren = children.get(i);
                 ProductDTO productChildrenDTO = productFactory.toDTO(productChildren);
                 childrenDTO.add(productChildrenDTO);
             }
+            for (int i = 0; i < images.size(); i++) {
+                Image image = images.get(i);
+                ImageDTO imageDTO = imageFactory.toDTO(image);
+                imagesDTO.add(imageDTO);
+            }
             ProductDTO productDTO = productFactory.toDTO(product);
             productDTO.setVariants(childrenDTO);
+            productDTO.setImages(imagesDTO);
             productDTO.setBaseCost(baseCostFactory.toDTO(product.getBasecost()));
             return productDTO;
         } else {

@@ -58,7 +58,7 @@ button:hover {
     color: var(--dark-green);
 }
 
-.container {
+container {
     max-width: 1200px;
     margin: auto;
     padding: 20px;
@@ -67,7 +67,7 @@ button:hover {
     gap: 20px;
 }
 
-.product-card {
+product-card {
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -79,18 +79,18 @@ button:hover {
     align-items: center;
 }
 
-.product-card:hover {
+product-card:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.logo {
+logo {
     display: block;
     margin: 20px auto;
     max-width: 250px;
 }
 
-.navbar {
+navbar {
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -99,13 +99,13 @@ button:hover {
     width: 100%;
 }
 
-.navbar a {
+navbar a {
     color: white;
     text-decoration: none;
     font-size: 1.2em;
     transition: color 0.3s ease;
 }
 
-.navbar a:hover {
+navbar a:hover {
     color: var(--secondary-green);
 }

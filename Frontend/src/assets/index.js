@@ -1,5 +1,5 @@
-const logo = 'https://res.cloudinary.com/sweta-agarwalla/image/upload/v1683874845/logo.png';
-const header = 'https://res.cloudinary.com/sweta-agarwalla/image/upload/v1683881822/hero-img.jpg';
+const logo = 'https://test-bucket-dasp.s3.us-east-2.amazonaws.com/%5BLOGOTIPO%5D+Cromatico.png';
+const header = 'https://img.freepik.com/fotos-premium/granja-campo-cultivos-montanas-fondo_271410-65433.jpg?w=1480';
 const hm = 'https://res.cloudinary.com/sweta-agarwalla/image/upload/v1683887347/h_m_q8hrlz.png';
 const sassafras = 'https://res.cloudinary.com/sweta-agarwalla/image/upload/v1684138583/lx4hccsrkezpp9i87cpu.png';
 const roadster = 'https://res.cloudinary.com/sweta-agarwalla/image/upload/v1684141812/images_haxj9g.png';

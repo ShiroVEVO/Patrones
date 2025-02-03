@@ -1,25 +1,111 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700;800&display=swap");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
 
+
 :root {
-  --primary-color: #e80071;
-  --primary-dark: #ba045c;
-  --primary-light: rgb(240, 206, 206);
-  --primary-lighter: rgb(253, 239, 245);
-  --primary-lightest: rgb(252, 244, 247);
-
-  --gray: rgb(139, 138, 138);
-  --gray-lighter: rgb(233, 232, 232);
-  --gray-light: rgb(242, 239, 239);
-  --gray-dark: rgb(93, 91, 91);
-  --white-color: white;
-
-  --black: black;
-  --black-light: rgb(46, 46, 46);
+    primary-green: #6FAF7E;  
+    secondary-green: #A8D5BA; 
+    dark-green: #2F4F3E; 
+    background: #F0F8F4; 
+    text-color: #2D3E34; 
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Nunito Sans", sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: var(--primary-green);
+    padding: 20px;
+    text-align: center;
+    font-size: 1.8em;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+header .logo {
+    position: absolute;
+    left: 20px;
+    max-height: 60px;
+}
+
+button {
+    background-color: var(--dark-green);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--secondary-green);
+    color: var(--dark-green);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    display: block;
+    margin: 20px auto;
+    max-width: 250px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: var(--dark-green);
+    width: 100%;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: var(--secondary-green);
 }

@@ -4,7 +4,7 @@
 
 :root {
     primary-green: #6FAF7E;  
-    secondary-green: #A8D5BA; 
+    --secondary-green: #A8D5BA; 
     dark-green: #2F4F3E; 
     background: #F0F8F4; 
     text-color: #2D3E34; 

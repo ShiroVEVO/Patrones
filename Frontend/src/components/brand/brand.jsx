@@ -1,14 +1,4 @@
 import { useNavigate } from "react-router";
-import {
-  hm,
-  sassafras,
-  levis,
-  urbanic,
-  zara,
-  dolce,
-  roadster,
-  tokyoTalkies,
-} from "../../assets";
 import { useFilters } from "../../context/filterContext";
 import "./brand.css";
 
@@ -17,83 +7,40 @@ export const Brand = () => {
   const navigate = useNavigate();
   return (
     <>
-      <h2>Brands ✨</h2>
+      <h2>Categories</h2>
       <div className="brand">
         <img
-          src={hm}
-          alt="hm"
+          src={"https://test-bucket-dasp.s3.us-east-2.amazonaws.com/top-view-arrangement-different-seeds.jpg"}
+          alt="Semillas"
           onClick={() => {
-            filterDispatch({ type: "clear_filters" });
-            filterDispatch({ type: "filter_by_brands", payload: "H&M" });
+            navigate("/catalogo");
+          }}
+        />
+        <img
+          src={"https://test-bucket-dasp.s3.us-east-2.amazonaws.com/top-view-light-green-succulents-pots-standing-wooden-surface.jpg"}
+          alt="Suculentas"
+          onClick={() => {
+            navigate("/catalogo");
+          }}
+        />
+        <img
+          src={"https://test-bucket-dasp.s3.us-east-2.amazonaws.com/natural-tropical-monstera-leaves-daylight.jpg"}
+          alt="Follaje"
+          onClick={() => {
+            navigate("/catalogo");
+          }}
+        />
+        <img
+          src={"https://test-bucket-dasp.s3.us-east-2.amazonaws.com/cactus-plant-studio-still-life.jpg"}
+          alt="Cactus"
+          onClick={() => {
             navigate("/products");
           }}
         />
         <img
-          src={sassafras}
-          alt="sassafras"
+          src={"https://test-bucket-dasp.s3.us-east-2.amazonaws.com/bright-background-with-lots-chrysanthemum-flower-texture-concept-abstract-background-with-natural-vegetation-flowers.jpg"}
+          alt="Flores"
           onClick={() => {
-            filterDispatch({ type: "clear_filters" });
-            filterDispatch({ type: "filter_by_brands", payload: "Sassafras" });
-            navigate("/products");
-          }}
-        />
-        <img
-          src={levis}
-          alt="levis"
-          onClick={() => {
-            filterDispatch({ type: "clear_filters" });
-            filterDispatch({ type: "filter_by_brands", payload: "Levis" });
-            navigate("/products");
-          }}
-        />
-        <img
-          src={urbanic}
-          alt="urbanic"
-          onClick={() => {
-            filterDispatch({ type: "clear_filters" });
-            filterDispatch({ type: "filter_by_brands", payload: "Urbanic" });
-            navigate("/products");
-          }}
-        />
-        <img
-          src={zara}
-          alt="zara"
-          onClick={() => {
-            filterDispatch({ type: "clear_filters" });
-            filterDispatch({ type: "filter_by_brands", payload: "Zara" });
-            navigate("/products");
-          }}
-        />
-        <img
-          src={dolce}
-          alt="dolce"
-          onClick={() => {
-            filterDispatch({ type: "clear_filters" });
-            filterDispatch({
-              type: "filter_by_brands",
-              payload: "Dolce & Gabbana",
-            });
-            navigate("/products");
-          }}
-        />
-        <img
-          src={roadster}
-          alt="roadster"
-          onClick={() => {
-            filterDispatch({ type: "clear_filters" });
-            filterDispatch({ type: "filter_by_brands", payload: "Roadster" });
-            navigate("/products");
-          }}
-        />
-        <img
-          src={tokyoTalkies}
-          alt="tokyoTalkies"
-          onClick={() => {
-            filterDispatch({ type: "clear_filters" });
-            filterDispatch({
-              type: "filter_by_brands",
-              payload: "Tokyo Talkies",
-            });
             navigate("/products");
           }}
         />

@@ -15,8 +15,8 @@ export const Home = () => {
       <div className="hero">
         <img src={header} alt="" />
         <div className="header">
-          <h1>Level up your style with</h1>
-          <h1> our collections</h1>
+          <h1>Bring nature to your life with</h1>
+          <h1> our products</h1>
           <p>
             <NavLink to="/products">
               Shop Now <i class="fa-solid fa-arrow-right"></i>
@@ -39,20 +39,20 @@ export const Home = () => {
             <i class="fa-solid fa-cloud-arrow-up"></i>
             <h4>Original Products</h4>
             <p>
-              We provide money back guarantee if the product is not original.
+              We provide money back guarantee if the product arrives in bad conditions.
             </p>
           </div>
           <div className="card">
             <i class="fa-solid fa-hand-holding-heart"></i>
             <h4>Satisfaction Guarantee</h4>
             <p>
-              Exchange the product you have purchased if it doesn't fit on you.
+              Exchange the product you have purchased if it isn't what you expected.
             </p>
           </div>
           <div className="card">
             <i class="fa-solid fa-cart-flatbed-suitcase"></i>
             <h4>New Arrival Everyday</h4>
-            <p>We update our collections almost everyday.</p>
+            <p>We update our species almost everyday.</p>
           </div>
           <div className="card">
             <i class="fa-solid fa-truck-fast"></i>

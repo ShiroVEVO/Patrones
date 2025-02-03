@@ -1,5 +1,5 @@
 footer {
-  background-color: var(--primary-color);
+  background-color: var(--primary-dark);
   margin-bottom: 0;
   padding: 0 70px;
   padding-bottom: 2px;
@@ -19,10 +19,7 @@ footer .footer-div {
 }
 
 .footer-div .logo-footer img {
-  width: 60px;
-  background-color: var(--white-color);
-  padding: 7px 15px;
-  border-radius: 30%;
+  width: 150px;
 }
 
 .footer-div .contacts {
